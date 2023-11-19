@@ -1,0 +1,91 @@
+/* デフォルトで聞いてしまうスタイルを打ち消す */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* ヘッダーの枠 */
+header{
+    /* 画面幅が768px以下の時はHeaderは70px */
+    height: 70px;
+
+    /* これはあまり関係ない */
+    border-bottom: solid;
+}
+
+/* お問い合わせボタンの枠 */
+div{
+    /* 幅は適当に指定 */
+    width: 100px;
+    /* 高さはheaderの高さが変わればそれに合わせて変えたいので、100%に指定 */
+    height: 100%;
+    /* aタグのabsoluteに対応した基準にする */
+    position: relative;
+
+    /* これはあまり関係ない */
+    background-color: pink;
+    margin: 0 0 0 auto;
+}
+
+a{
+    /* divタグのrelativeを基準として、位置を指定する */
+    position: absolute;
+    /* 上下左右に寄らない＝上下左右中央に設置し続ける */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    /* 「お問い合わせ」という文章の表示・非表示で高さが変わるが、幅は変わらないので、 */
+    /* 高さは、内部の要素の大きさに合わせる */
+    /* 幅は、100％にして、要素が中央揃えになる用text-alignを設定 */
+    height: max-content;
+    width: 100%;
+    text-align: center;
+
+    display: block;
+    
+}
+
+.fa-envelope{
+    font-size: 42px;
+}
+p{
+    font-size: 14px;
+    /* 画面が小さい時は非表示 */
+    display: none;
+}
+
+/* ↓これ以外＝「０～768」は↑のコードが適用される。 */
+
+/* 最小が1024＝「1024～全部」 */
+@media (min-width: 1024px) {
+    header{
+        /* 画面幅が変わることで高さも変わるようにした */
+        height: 100px;
+    }
+    p{
+        /* 画面が大きい時は表示 */
+        display: block;
+    }
+    .fa-envelope{
+        /* アイコンの大きさも変えてみる */
+        font-size: 36px;
+    }
+}
+
+/* 最小が769＝「769～1023」 */
+@media (min-width: 769px) {
+    header{
+        /* 画面幅が変わることで高さも変わるようにした */
+        height: 85px;
+    }
+    p{
+        /* 画面が大きい時は表示 */
+        display: block;
+    }
+    .fa-envelope{
+        /* アイコンの大きさも変えてみる */
+        font-size: 28px;
+    }
+}
